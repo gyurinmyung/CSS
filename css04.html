@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 링크선택자</title>
+    <style>
+        a { font-size: 24px; }
+        a:link { color: rgb(251, 81, 115); }
+        a:visited { color: rgb(144, 189, 249); }                        /* link, visited는 a 태그만 가능함 */
+        a:hover { background-color:midnightblue; color:khaki; }       /* hover, active는 아무 태그에나 가능 */
+        a:active { background-color: lightblue; color: chocolate; }   /* active는 해당 요소를 누르고 있을 때 색이 바뀜 */
+        /* link, visied, hover, active의 순서를 꼭 지켜야 함 */
+
+        a::before { content:"♥" }                                          /* a::before ,전후선택자: a 태그의 내용 앞부분 */ /* 가상선택자는 콜론 두 개 */
+        a::after { content:"♥ "attr(href) }                                /* a::after ,전후선택자: a 태그의 내용 뒷부분 */
+        /* attr: 어트리뷰트 */
+
+        p::first-letter { font-size: 30px; }         /* 첫글자, 첫줄 선택자 */
+        p::first-line { color:rgb(193, 163, 249) } /* 콜론이 붙으면 무조건 가상선택자 */
+        
+        #btn1 { display:block; width: 300px; height: 40px; }
+        #ck1:checked + #btn1:before { content:"펼침"; }
+        #ck1:not(:checked) + #btn1:before { content:"접힘"; } 
+        #box { width:500px; height:300px; border:3px solid rgb(252, 204, 199); 
+        background-color:rgb(201, 240, 240); transition:0.25s; }
+        #ck1:checked ~ #box { visibility: visible; opacity:1;  }
+        #ck1:not(:checked) ~ #box { visibility:hidden; opacity:0; }
+
+        section { width: 600px; height:300px; 
+        border:3px solid rgb(255, 191, 94); 
+        background-color: rgb(252, 245, 178); display:none; }   /* display:none 출력이 안 됨 */
+        section:target { display:block; }
+
+        /* 폼 관련 선택자
+        input:enabled - 사용 가능한 input 요소를 선택
+        input:disabled - 사용 불가능한 input 요소를 선택
+        input:focus - 초점(커서)가 들어왔을 때 선택
+        input::placeholder - placeholder 속성의 값을 선택
+        */
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="https://www.google.com" title="구글">링크1</a><br>
+        <a href="https://www.naver.com" title="네이버">링크2</a><br>
+        <a href="https://www.tjoen.co.kr" title="더조은">링크3</a><br>
+        <a href="https://www.daum.net" title="다음">링크4</a><br>
+        <a href="링크 없는 a요소">링크5</a>
+    </nav>
+    <div>
+        <p> 
+            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+        </p>
+        <p>
+            계란초밥 로제떡볶이 치킨 핫도그 마라탕 마라샹궈 마카롱 버터바 야키토리 포카칩 연어포케 샐러드 허니콤보 통모짜핫도그 요즘잘자쿨냥이
+            계란초밥 로제떡볶이 치킨 핫도그 마라탕 마라샹궈 마카롱 버터바 야키토리 포카칩 연어포케 샐러드 허니콤보 통모짜핫도그 요즘잘자쿨냥이
+            계란초밥 로제떡볶이 치킨 핫도그 마라탕 마라샹궈 마카롱 버터바 야키토리 포카칩 연어포케 샐러드 허니콤보 통모짜핫도그 요즘잘자쿨냥이
+            계란초밥 로제떡볶이 치킨 핫도그 마라탕 마라샹궈 마카롱 버터바 야키토리 포카칩 연어포케 샐러드 허니콤보 통모짜핫도그 요즘잘자쿨냥이
+        </p>
+    </div>
+    <hr>
+    <input type="checkbox" id="ck1">
+    <label for="ck1" id="btn1"></label>
+    <div id="box">보물상자</div>
+    <div>
+        <ul>
+            <li><a href="#sec1">1메뉴</a></li>
+            <li><a href="#sec2">2메뉴</a></li>
+            <li><a href="#sec3">3메뉴</a></li>
+        </ul>
+    </div>
+    <section id="sec1">
+            <h2>섹션 제목1</h2>
+            <h2>섹션 제목2</h2>
+            <h2>섹션 제목3</h2>
+    </section>
+</body>
+</html>

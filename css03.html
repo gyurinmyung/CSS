@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 연습 - 구조 선택자</title>
+    <style>
+     /* 형제 요소 */
+     h2 + ul { list-style:square; }                 /* 인접 요소 선택자(next): 바로 인접한 태그만 해당 */
+     ul + ul { list-style:decimal; }
+     h2 ~ ul { border:3px solid rgb(255, 173, 158); }  /* 인접 요소들 선택자(nextAll): ~ 이후의 해당 태그 모두 */
+     .con li { color:royalblue; }                                      /* 조상 후손 */
+     .con > ul > li { border-bottom:2px solid rgb(220, 0, 102); }      /* 부모 > 자식 */
+     
+     li:first-child { color:rgb(250, 24, 58); }
+     li:last-child { color:rgb(200, 0, 60); }
+     li:nth-child(2) { color:rgb(167, 29, 167); }
+     li:only-child { font-style:italic; color:rebeccapurple; }
+     li:nth-child(2n) { background-color: rgb(253, 142, 142); }
+     li:nth-child(2n+1) { background-color: rgb(245, 150, 218); }
+
+     li:first-of-type { padding-left:120px; }       /* 순서가 중요함 */
+     /* last-of-type, nth-of-type, only-of-type 등도 있음 */
+     p:empty::before, div:empty::before { content:"자식 또는 내용이 없는 요소"; }
+
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h2>div 요소 안의 목록 요소</h2>
+        <ul class="lst1">
+            <li>내용1</li>
+            <li>내용2</li>
+            <li>내용3</li>
+            <li>내용4</li>
+        </ul>
+        <ul class="lst2">
+            <li>내용1</li>
+            <li>내용2</li>
+            <li>내용3</li>
+            <li>내용4</li>
+        </ul>
+        <ul class="lst3">
+            <li>내용1</li>    
+        </ul>
+    </div>
+    <hr>
+    <article>
+        <h2>article 요소 안의 목록</h2>
+        <ul>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ul>
+        <ol>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ol>
+    </article>
+    <div class="con" title="자식이 없는 요소"></div>
+    <div class="con"> 여기는 내용
+        <p title="내용이 없는 요소"></p>
+    </div>
+</body>
+</html>
